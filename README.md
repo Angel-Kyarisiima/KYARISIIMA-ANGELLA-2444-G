@@ -9,3 +9,4 @@ Daily Java OOP Practice - Modules 1-4 (Angel Kyarisiima)
 | 2026-09-15 | 19_ShoppingCartOOP | `/2026-09-15_19_ShoppingCartOOP/Main.java` | Java | ✅ |
 | 2026-09-15 | BookLibraryInheritance | `/2026-09-15_BookLibraryInheritance/Main.java` | Java | ✅ |
 | 2026-09-16 | 05_SwitchStatement | `/2026-09-16_05_SwitchStatement/Main.java` | Java | ✅ |
+| 2026-09-17 | 07_ClassAndObject | `/2026-09-17_07_ClassAndObject/Main.java` | Java | ✅ |
