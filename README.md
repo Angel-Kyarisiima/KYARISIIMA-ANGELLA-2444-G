@@ -11,3 +11,4 @@ Daily Java OOP Practice - Modules 1-4 (Angel Kyarisiima)
 | 2026-09-16 | 05_SwitchStatement | `/2026-09-16_05_SwitchStatement/Main.java` | Java | ✅ |
 | 2026-09-17 | 07_ClassAndObject | `/2026-09-17_07_ClassAndObject/Main.java` | Java | ✅ |
 | 2026-09-18 | 13_StudentFeesEncap | `/2026-09-18_13_StudentFeesEncap/Main.java` | Java | ✅ |
+| 2026-09-21 | 02_VariablesDataTypes | `/2026-09-21_02_VariablesDataTypes/Main.java` | Java | ✅ |
