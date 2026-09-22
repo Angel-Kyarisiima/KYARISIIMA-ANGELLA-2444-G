@@ -1,72 +1,48 @@
-# Smart Campus Student Management and Academic Information System
-**Kyarisiima Angella - 2444/G** | Diploma in Computer Science (DCS) | OOP Java Coursework
-**Deadline:** 25 Sept 2026 - eCampus (GitHub Link) | **Simplified Version**
+# Smart Campus Student Management System
 
-### Source: `cs OOP.pdf` - Smart Campus System
+**Name:** Kyarisiima Angella  
+**Reg No:** 2444/G  
+**Course:** DCS Year 2 - Object Oriented Programming (Java)  
+**Project:** Smart Campus Student Management and Academic Information System
 
-## Tech Stack (Simplified)
-- **Language:** Java 25 (plain console, no framework)
-- **Storage:** In-memory `ArrayList` (simulates MySQL/SQLite - Objective 13 secure)
-- **Concepts:** Encapsulation (private fields + getters), Classes/Objects, Constructors, ArrayLists, Loops
-- **Run:** `javac Main.java && java Main`
+This project is for the Java coursework based on `cs OOP.pdf`. It manages students, lecturers, departments, programs, courses, attendance, marks and results.
 
-## All 14 Objectives Covered in ONE file `Main.java`
-
-| # | Objective | Code Location |
-|---|-----------|---------------|
-| 1 | Register & manage student info | `Student` class, `students` list, `setupDemoData()` |
-| 2 | Manage programs & departments | `Department`, `Program` classes |
-| 3 | Manage courses & units | `Course` (code, name, creditUnits, dept) |
-| 4 | Assign lecturers to courses | `Lecturer.assignCourse()` |
-| 5 | Register students for courses | `Enrollment`, `enrollments` list |
-| 6 | Record attendance | `Attendance` (PRESENT/ABSENT), `attendances` list |
-| 7 | Record coursework (40) + exam (60) marks | `Result.coursework`, `Result.exam` |
-| 8 | Auto calculate grades | `Result.calculateGrade()` -> A(5),B(4),C(3),D(2),F(0) |
-| 9 | Generate transcripts | `generateTranscript(Student)` |
-| 10 | Monitor academic performance | `calculateGPA()`, `getStanding()` |
-| 11 | Generate academic reports | `generateReports()` - dept count, course avg, attendance % |
-| 12 | Role-based authentication | `User`, `Role` enum, `login()` |
-| 13 | Secure records | Private fields, auth check, enabled flag |
-| 14 | Dashboards | `adminDashboard()`, `lecturerDashboard()`, `studentDashboard()` |
-
-Grade Logic: `total = cw + exam` | >=80 A(5.0), 70-79 B(4.0), 60-69 C(3.0), 50-59 D(2.0), <50 F(0.0) | `GPA = Σ(gp*credits)/Σcredits`
-
-## Quick Start
+## How to Run
 ```bash
 cd smart-campus-system
 javac Main.java
 java Main
 ```
+Then open: http://localhost:8080
 
-### Expected Output
-```
-[Setup] Seeded: 2 Depts, 2 Programs, 3 Courses, 2 Students, 3 Enrollments
- SMART CAMPUS SYSTEM - SIMPLIFIED DEMO
- [12] ROLE-BASED AUTHENTICATION - Admin/Lecturer/Student OK
- [14] DASHBOARDS - Admin/Lecturer/Student views
- [9] TRANSCRIPT - CSC211 85 A, CSC212 70 B - GPA 4.57 First Class
- [11] REPORTS - dept, course avg, attendance %
- === Demo Complete - All 14 Objectives Shown ===
-```
+You will see a login page.
 
-## Demo Data
-- **Departments:** CSC Computer Science, MGT Management
-- **Programs:** DCS Diploma in Computer Science, BCS
-- **Courses:** CSC211 OOP (4cr), CSC212 DCN (3cr), CSC213 DB (3cr)
-- **Lecturer:** Dr. Mukasa (assigned CSC211, CSC212)
-- **Students:** 2025/DCS/DAY/0146 Ssegawa Tonny, 2444/G Kyarisiima Angella
-- **Results:** Tonny 85 A + 70 B = GPA 4.57 First Class; Angella 65 C
+## Login Accounts
+- Admin: `admin` / `admin123` -> Admin dashboard (manage students, courses, reports)
+- Lecturer: `lecturer1` / `lecturer123` -> Lecturer dashboard (my courses, attendance, marks)
+- Student: `angella` / `student123` -> Student dashboard (courses, attendance, results, transcript)
 
-## Target Users
-- **Admin:** manage students/lecturers/depts/programs/courses/accounts/reports
-- **Lecturer:** view assigned courses, view students, record attendance, enter marks
-- **Student:** view profile, register courses, view attendance, view results/GPA, transcript
+Each user sees only their own dashboard. If you try to open another dashboard it shows access denied.
 
-## For Submission
-Repo: `KYARISIIMA-ANGELLA-2444-G` -> folder `smart-campus-system/Main.java`
-Submit GitHub link: `https://github.com/Angel-Kyarisiima/KYARISIIMA-ANGELLA-2444-G/tree/main/smart-campus-system` on eCampus.
+## What the System Does
+- Add students, departments, programs and courses
+- Assign lecturers to courses
+- Enroll students to courses
+- Record attendance (PRESENT/ABSENT)
+- Enter coursework (40) and exam (60) marks and it calculates total, grade (A,B,C,D,F) and grade point automatically
+- Calculate GPA and show class (First Class etc)
+- Show transcript for each student
+- Show reports like number of students per department
 
-## Extensions (if needed)
-- Add JDBC MySQL: replace lists with `StudentRepository` + `Connection`
-- Add Spring Boot: wrap same model classes with `@Entity`
-- Add JavaFX: reuse same classes for GUI
+## Sample Data
+- Departments: Computer Science (CSC), Management (MGT)
+- Courses: CSC211 OOP (4 credits), CSC212 Data Comm (3), CSC213 Database (3)
+- Lecturer: Dr. Namatovu - teaches CSC211 and CSC212
+- Students: Nalwoga Grace (2025/DCS/DAY/0088) and Kyarisiima Angella (2444/G)
+- Results: Grace has 85 (A) and 70 (B), GPA 4.57
+
+## Files
+- `Main.java` - all classes and server in one file
+- `cs OOP.pdf` - coursework document
+
+GitHub: https://github.com/Angel-Kyarisiima/KYARISIIMA-ANGELLA-2444-G/tree/main/smart-campus-system
