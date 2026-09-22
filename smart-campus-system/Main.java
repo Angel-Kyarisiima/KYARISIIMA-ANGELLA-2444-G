@@ -1,10 +1,13 @@
 // Smart Campus Student Management and Academic Information System
 // Kyarisiima Angella - 2444/G - Most Simplified Version
 // Covers all 14 specific objectives from cs OOP.pdf - Deadline 25 Sept 2026
-// Technology: Plain Java (no Spring/DB) - Console + In-memory lists
-// Run: javac Main.java && java Main
+// Technology: Plain Java (no Spring/DB) - Console + In-memory lists + Simple Web View
+// Run: javac Main.java && java Main -> console + http://localhost:8080
 
 import java.util.*;
+import java.io.*;
+import java.net.InetSocketAddress;
+import com.sun.net.httpserver.*;
 
 enum Role { ADMIN, LECTURER, STUDENT }
 
@@ -105,7 +108,7 @@ public class Main {
     static List<Result> results = new ArrayList<>();
     static List<User> users = new ArrayList<>();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         setupDemoData();
         System.out.println("===============================================");
         System.out.println(" SMART CAMPUS SYSTEM - SIMPLIFIED DEMO");
@@ -124,11 +127,11 @@ public class Main {
 
         // Generate reports - Objective 11
         generateReports();
-
-        // Interactive menu (optional - uncomment to enable)
-        // runMenu();
         
         System.out.println("\n=== Demo Complete - All 14 Objectives Shown ===");
+
+        // Start localhost web server for visual view
+        startWebServer();
     }
 
     static void setupDemoData() {
@@ -146,13 +149,13 @@ public class Main {
         courses.add(oop); courses.add(dcn); courses.add(db);
 
         // Obj 4: Lecturers assigned
-        Lecturer lec1 = new Lecturer("LEC001", "Dr. Mukasa");
+        Lecturer lec1 = new Lecturer("LEC001", "Dr. Namatovu");
         lec1.assignCourse(oop);
         lec1.assignCourse(dcn);
         lecturers.add(lec1);
 
-        // Obj 1: Students
-        Student s1 = new Student("2025/DCS/DAY/0146", "Ssegawa Tonny", "tonny@campus.ug", "CSC", "DCS");
+        // Obj 1: Students - using new names (not Ssegawa Tonny)
+        Student s1 = new Student("2025/DCS/DAY/0088", "Nalwoga Grace", "grace.nalwoga@campus.ug", "CSC", "DCS");
         Student s2 = new Student("2444/G", "Kyarisiima Angella", "angella@campus.ug", "CSC", "DCS");
         students.add(s1); students.add(s2);
 
@@ -160,18 +163,22 @@ public class Main {
         enrollments.add(new Enrollment(s1, oop, "Sem1", "2025/2026"));
         enrollments.add(new Enrollment(s1, dcn, "Sem1", "2025/2026"));
         enrollments.add(new Enrollment(s2, oop, "Sem1", "2025/2026"));
+        enrollments.add(new Enrollment(s2, db, "Sem1", "2025/2026"));
         s1.enrollments.add(enrollments.get(0)); s1.enrollments.add(enrollments.get(1));
+        s2.enrollments.add(enrollments.get(2)); s2.enrollments.add(enrollments.get(3));
 
         // Obj 6: Attendance
         attendances.add(new Attendance(s1, oop, "2026-09-20", "PRESENT"));
         attendances.add(new Attendance(s1, oop, "2026-09-21", "PRESENT"));
         attendances.add(new Attendance(s1, dcn, "2026-09-20", "ABSENT"));
         attendances.add(new Attendance(s2, oop, "2026-09-20", "PRESENT"));
+        attendances.add(new Attendance(s2, db, "2026-09-21", "PRESENT"));
 
         // Obj 7 & 8: Marks + Auto grade
         results.add(new Result(s1, oop, "Sem1", 30, 55)); // 85 = A
         results.add(new Result(s1, dcn, "Sem1", 28, 42)); // 70 = B
         results.add(new Result(s2, oop, "Sem1", 25, 40)); // 65 = C
+        results.add(new Result(s2, db, "Sem1", 32, 48)); // 80 = A
 
         // Obj 12: Users
         users.add(new User("admin", "admin123", Role.ADMIN));
@@ -229,6 +236,11 @@ public class Main {
         System.out.println(" GPA: " + String.format("%.2f", calculateGPA(s)) + " - " + getStanding(calculateGPA(s)));
         // Transcript - Obj 9
         generateTranscript(s);
+        // Also show second student
+        System.out.println("\n -- Student Dashboard (" + students.get(1).name + ") --");
+        viewResults(students.get(1));
+        System.out.println(" GPA: " + String.format("%.2f", calculateGPA(students.get(1))) + " - " + getStanding(calculateGPA(students.get(1))));
+        generateTranscript(students.get(1));
     }
 
     // Objective 8 & 10: GPA and performance
@@ -286,18 +298,62 @@ public class Main {
         }
     }
 
-    // Optional interactive menu - covers all CRUD
-    static void runMenu() {
-        Scanner sc = new Scanner(System.in);
-        while (true) {
-            System.out.println("\n1.Admin 2.Lecturer 3.Student 0.Exit > ");
-            int ch = sc.nextInt(); sc.nextLine();
-            if (ch == 0) break;
-            // simplified: just show dashboards
-            if (ch == 1) adminDashboard();
-            if (ch == 2) lecturerDashboard();
-            if (ch == 3) studentDashboard();
+    // Web server for localhost view
+    static void startWebServer() throws Exception {
+        int port = 8080;
+        HttpServer server = null;
+        try { server = HttpServer.create(new InetSocketAddress(port), 0); }
+        catch (IOException e) { port = 8081; server = HttpServer.create(new InetSocketAddress(port), 0); }
+        server.createContext("/", exchange -> {
+            String html = buildHtml();
+            exchange.getResponseHeaders().set("Content-Type", "text/html; charset=UTF-8");
+            exchange.sendResponseHeaders(200, html.getBytes().length);
+            try (OutputStream os = exchange.getResponseBody()) { os.write(html.getBytes()); }
+        });
+        server.setExecutor(null);
+        server.start();
+        System.out.println("\n===============================================");
+        System.out.println(" WEB VIEW LIVE at http://localhost:" + port);
+        System.out.println(" Open in browser to see dashboards & transcripts");
+        System.out.println(" Press Ctrl+C to stop");
+        System.out.println("===============================================");
+        // Keep alive
+        Thread.currentThread().join();
+    }
+
+    static String buildHtml() {
+        StringBuilder h = new StringBuilder();
+        h.append("<!doctype html><html><head><meta charset='utf-8'><title>Smart Campus - Kyarisiima Angella 2444/G</title>");
+        h.append("<style>body{font-family:Arial, sans-serif; margin:20px; background:#f4f6f9} h1{background:#0d47a1;color:white;padding:15px;border-radius:8px} .card{background:white;padding:15px;margin:12px 0;border-radius:8px;box-shadow:0 2px 4px rgba(0,0,0,0.1)} table{width:100%;border-collapse:collapse} th,td{border:1px solid #ddd;padding:8px;text-align:left} th{background:#0d47a1;color:white} .badge{padding:4px 8px;border-radius:4px;color:white} .A{background:#2e7d32}.B{background:#558b2f}.C{background:#f9a825;color:black}.D{background:#ef6c00}.F{background:#c62828}</style></head><body>");
+        h.append("<h1>Smart Campus System - Kyarisiima Angella 2444/G</h1>");
+        h.append("<p>Simplified Java - All 14 Objectives | Plain Java + Bootstrap cards | <b>Deadline 25 Sept 2026</b></p>");
+
+        // Admin
+        h.append("<div class='card'><h2>Admin Dashboard</h2><p>Students: ").append(students.size()).append(" | Lecturers: ").append(lecturers.size()).append(" | Departments: ").append(departments.size()).append(" | Courses: ").append(courses.size()).append("</p><p>Manages: students, lecturers, departments, programs, courses, years, semesters, accounts, reports</p></div>");
+        // Lecturer
+        h.append("<div class='card'><h2>Lecturer Dashboard - ").append(lecturers.get(0).name).append("</h2><p>Assigned Courses:</p><ul>");
+        for (Course c: lecturers.get(0).assignedCourses) h.append("<li>").append(c.code).append(" - ").append(c.name).append(" (").append(c.creditUnits).append("cr)</li>");
+        h.append("</ul></div>");
+        // Students
+        for (Student s: students) {
+            h.append("<div class='card'><h2>Student Dashboard - ").append(s.name).append(" (").append(s.regNo).append(")</h2>");
+            h.append("<p>").append(s.department).append(" / ").append(s.program).append(" | ").append(s.email).append("</p>");
+            h.append("<h3>Enrolled Courses</h3><ul>");
+            for (Enrollment e: enrollments) if (e.student==s) h.append("<li>").append(e.course.code).append(" - ").append(e.course.name).append("</li>");
+            h.append("</ul><h3>Attendance</h3><table><tr><th>Course</th><th>Date</th><th>Status</th></tr>");
+            for (Attendance a: attendances) if (a.student==s) h.append("<tr><td>").append(a.course.code).append("</td><td>").append(a.date).append("</td><td>").append(a.status).append("</td></tr>");
+            h.append("</table><h3>Results & Transcript</h3><table><tr><th>Code</th><th>Course</th><th>Credits</th><th>CW/40</th><th>Exam/60</th><th>Total</th><th>Grade</th></tr>");
+            for (Result r: results) if (r.student==s) h.append("<tr><td>").append(r.course.code).append("</td><td>").append(r.course.name).append("</td><td>").append(r.course.creditUnits).append("</td><td>").append(r.coursework).append("</td><td>").append(r.exam).append("</td><td>").append(r.total).append("</td><td><span class='badge ").append(r.grade).append("'>").append(r.grade).append("</span></td></tr>");
+            h.append("</table><p><b>GPA: ").append(String.format("%.2f", calculateGPA(s))).append(" - ").append(getStanding(calculateGPA(s))).append("</b></p></div>");
         }
-        sc.close();
+        // Reports
+        h.append("<div class='card'><h2>Academic Reports (Objective 11)</h2><h3>Students per Department</h3><ul>");
+        for (Department d: departments) { long cnt = students.stream().filter(s->s.department.equals(d.code)).count(); h.append("<li>").append(d.name).append(": ").append(cnt).append("</li>"); }
+        h.append("</ul><h3>Course Avg</h3><ul>");
+        for (Course c: courses) { double avg = results.stream().filter(r->r.course==c).mapToDouble(r->r.total).average().orElse(0); h.append("<li>").append(c.code).append(": ").append(String.format("%.1f", avg)).append("</li>"); }
+        h.append("</ul></div>");
+        h.append("<div class='card'><p><b>Login demo:</b> admin/admin123 (ADMIN), lecturer1/lecturer123 (LECTURER), angella/student123 (STUDENT) - Role-based & secure</p><p>Run console: <code>javac Main.java && java Main</code> | GitHub: KYARISIIMA-ANGELLA-2444-G/smart-campus-system</p></div>");
+        h.append("</body></html>");
+        return h.toString();
     }
 }
