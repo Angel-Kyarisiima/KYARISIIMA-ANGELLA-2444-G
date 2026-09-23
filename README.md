@@ -14,3 +14,4 @@ Daily Java OOP Practice - Modules 1-4 (Angel Kyarisiima)
 | 2026-09-21 | 02_VariablesDataTypes | `/2026-09-21_02_VariablesDataTypes/Main.java` | Java | ✅ |
 | 2026-09-22 | AverageMarks | `/2026-09-22_AverageMarks/Main.java` | Java | ✅ |
 | 2026-09-22 | **Smart Campus System (Coursework)** | `/smart-campus-system/Main.java` | Java | ✅ |
+| 2026-09-23 | 18_ATMEncap | `/2026-09-23_18_ATMEncap/Main.java` | Java | ✅ |
