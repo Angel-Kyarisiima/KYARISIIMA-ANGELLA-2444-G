@@ -18,3 +18,4 @@ Daily Java OOP Practice - Modules 1-4 (Angel Kyarisiima)
 | 2026-09-25 | 14_ThisKeyword | `/2026-09-25_14_ThisKeyword/Main.java` | Java | ✅ |
 | 2026-09-26 | 01_HelloWorld | `/2026-09-26_01_HelloWorld/Main.java` | Java | ✅ |
 | 2026-09-27 | 16_LibraryEncap | `/2026-09-27_16_LibraryEncap/Main.java` | Java | ✅ |
+| 2026-09-28 | 06_NumbersAverage | `/2026-09-28_06_NumbersAverage/Main.java` | Java | ✅ |
