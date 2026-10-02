@@ -22,3 +22,4 @@ Daily Java OOP Practice - Modules 1-4 (Angel Kyarisiima)
 | 2026-09-29 | 17_SimpleInheritance | `/2026-09-29_17_SimpleInheritance/Main.java` | Java | ✅ |
 | 2026-09-30 | 03_ControlIfElse | `/2026-09-30_03_ControlIfElse/Main.java` | Java | ✅ |
 | 2026-10-01 | 04_LoopsForWhile | `/2026-10-01_04_LoopsForWhile/Main.java` | Java | ✅ |
+| 2026-10-02 | 15_ArrayAndLoop | `/2026-10-02_15_ArrayAndLoop/Main.java` | Java | ✅ |
