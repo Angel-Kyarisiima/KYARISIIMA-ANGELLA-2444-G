@@ -24,3 +24,4 @@ Daily Java OOP Practice - Modules 1-4 (Angel Kyarisiima)
 | 2026-10-01 | 04_LoopsForWhile | `/2026-10-01_04_LoopsForWhile/Main.java` | Java | ✅ |
 | 2026-10-02 | 15_ArrayAndLoop | `/2026-10-02_15_ArrayAndLoop/Main.java` | Java | ✅ |
 | 2026-10-03 | 12_AccessModifiers | `/2026-10-03_12_AccessModifiers/Main.java` | Java | ✅ |
+| 2026-10-04 | 20_GettersSettersValidation | `/2026-10-04_20_GettersSettersValidation/Main.java` | Java | ✅ |
