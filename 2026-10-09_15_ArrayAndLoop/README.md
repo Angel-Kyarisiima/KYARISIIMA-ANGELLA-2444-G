@@ -1,0 +1,8 @@
+# 15_ArrayAndLoop
+
+Module aligned Java practice - 2026-10-09
+
+Compile & Run:
+```bash
+javac Main.java && java Main
+```

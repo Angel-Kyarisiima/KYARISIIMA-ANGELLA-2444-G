@@ -29,3 +29,4 @@ Daily Java OOP Practice - Modules 1-4 (Angel Kyarisiima)
 | 2026-10-06 | 04_LoopsForWhile | `/2026-10-06_04_LoopsForWhile/Main.java` | Java | ✅ |
 | 2026-10-07 | 05_SwitchStatement | `/2026-10-07_05_SwitchStatement/Main.java` | Java | ✅ |
 | 2026-10-08 | 01_HelloWorld | `/2026-10-08_01_HelloWorld/Main.java` | Java | ✅ |
+| 2026-10-09 | 15_ArrayAndLoop | `/2026-10-09_15_ArrayAndLoop/Main.java` | Java | ✅ |
