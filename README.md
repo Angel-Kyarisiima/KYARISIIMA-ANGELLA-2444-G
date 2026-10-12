@@ -32,3 +32,4 @@ Daily Java OOP Practice - Modules 1-4 (Angel Kyarisiima)
 | 2026-10-09 | 15_ArrayAndLoop | `/2026-10-09_15_ArrayAndLoop/Main.java` | Java | ✅ |
 | 2026-10-10 | 12_AccessModifiers | `/2026-10-10_12_AccessModifiers/Main.java` | Java | ✅ |
 | 2026-10-11 | 17_SimpleInheritance | `/2026-10-11_17_SimpleInheritance/Main.java` | Java | ✅ |
+| 2026-10-12 | 19_ShoppingCartOOP | `/2026-10-12_19_ShoppingCartOOP/Main.java` | Java | ✅ |
