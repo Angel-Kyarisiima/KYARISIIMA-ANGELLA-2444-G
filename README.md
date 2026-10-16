@@ -36,3 +36,4 @@ Daily Java OOP Practice - Modules 1-4 (Angel Kyarisiima)
 | 2026-10-13 | 09_MethodsDemo | `/2026-10-13_09_MethodsDemo/Main.java` | Java | ✅ |
 | 2026-10-14 | 02_VariablesDataTypes | `/2026-10-14_02_VariablesDataTypes/Main.java` | Java | ✅ |
 | 2026-10-15 | 20_GettersSettersValidation | `/2026-10-15_20_GettersSettersValidation/Main.java` | Java | ✅ |
+| 2026-10-16 | 11_BankAccountEncap | `/2026-10-16_11_BankAccountEncap/Main.java` | Java | ✅ |
