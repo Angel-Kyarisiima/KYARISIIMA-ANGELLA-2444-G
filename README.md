@@ -40,3 +40,4 @@ Daily Java OOP Practice - Modules 1-4 (Angel Kyarisiima)
 | 2026-10-17 | 07_ClassAndObject | `/2026-10-17_07_ClassAndObject/Main.java` | Java | ✅ |
 | 2026-10-18 | 08_Constructors | `/2026-10-18_08_Constructors/Main.java` | Java | ✅ |
 | 2026-10-19 | 03_ControlIfElse | `/2026-10-19_03_ControlIfElse/Main.java` | Java | ✅ |
+| 2026-10-21 | 13_StudentFeesEncap | `/2026-10-21_13_StudentFeesEncap/Main.java` | Java | ✅ |
