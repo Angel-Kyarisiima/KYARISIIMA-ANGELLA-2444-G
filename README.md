@@ -42,3 +42,4 @@ Daily Java OOP Practice - Modules 1-4 (Angel Kyarisiima)
 | 2026-10-19 | 03_ControlIfElse | `/2026-10-19_03_ControlIfElse/Main.java` | Java | ✅ |
 | 2026-10-21 | 13_StudentFeesEncap | `/2026-10-21_13_StudentFeesEncap/Main.java` | Java | ✅ |
 | 2026-10-22 | 14_ThisKeyword | `/2026-10-22_14_ThisKeyword/Main.java` | Java | ✅ |
+| 2026-10-23 | 16_LibraryEncap | `/2026-10-23_16_LibraryEncap/Main.java` | Java | ✅ |
