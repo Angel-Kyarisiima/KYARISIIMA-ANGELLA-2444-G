@@ -45,3 +45,4 @@ Daily Java OOP Practice - Modules 1-4 (Angel Kyarisiima)
 | 2026-10-23 | 16_LibraryEncap | `/2026-10-23_16_LibraryEncap/Main.java` | Java | ✅ |
 | 2026-10-24 | 10_EncapsulationBasic | `/2026-10-24_10_EncapsulationBasic/Main.java` | Java | ✅ |
 | 2026-10-25 | 18_ATMEncap | `/2026-10-25_18_ATMEncap/Main.java` | Java | ✅ |
+| 2026-10-27 | 06_NumbersAverage | `/2026-10-27_06_NumbersAverage/Main.java` | Java | ✅ |
