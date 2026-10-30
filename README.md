@@ -48,3 +48,4 @@ Daily Java OOP Practice - Modules 1-4 (Angel Kyarisiima)
 | 2026-10-27 | 06_NumbersAverage | `/2026-10-27_06_NumbersAverage/Main.java` | Java | ✅ |
 | 2026-10-28 | 02_VariablesDataTypes | `/2026-10-28_02_VariablesDataTypes/Main.java` | Java | ✅ |
 | 2026-10-29 | 18_ATMEncap | `/2026-10-29_18_ATMEncap/Main.java` | Java | ✅ |
+| 2026-10-30 | 13_StudentFeesEncap | `/2026-10-30_13_StudentFeesEncap/Main.java` | Java | ✅ |
