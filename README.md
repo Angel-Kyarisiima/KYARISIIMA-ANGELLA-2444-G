@@ -50,3 +50,4 @@ Daily Java OOP Practice - Modules 1-4 (Angel Kyarisiima)
 | 2026-10-29 | 18_ATMEncap | `/2026-10-29_18_ATMEncap/Main.java` | Java | ✅ |
 | 2026-10-30 | 13_StudentFeesEncap | `/2026-10-30_13_StudentFeesEncap/Main.java` | Java | ✅ |
 | 2026-10-31 | 16_LibraryEncap | `/2026-10-31_16_LibraryEncap/Main.java` | Java | ✅ |
+| 2026-11-01 | 04_LoopsForWhile | `/2026-11-01_04_LoopsForWhile/Main.java` | Java | ✅ |
